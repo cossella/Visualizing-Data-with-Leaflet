@@ -11,7 +11,7 @@ var earthquakes = new L.LayerGroup();
 
 d3.json(quakes, function(geoJSON) {
     L.geoJSON(geoJSON.features, {
-        pointToLayer: function (geoPoint, coordinates) {
+        pointToLayer: function(geoPoint, coordinates) {
             return L.circleMarker(coordinates, {radius: markerSize(geoPoint.properties.mag)
             });
         },
@@ -25,7 +25,7 @@ d3.json(quakes, function(geoJSON) {
             }
         },
 
-        onEachFeature: function (feature, layer) {
+        onEachFeature: function(feature, layer) {
             layer.bindPopup(
                 "<h4 style='text-align:center;'>" + new Date(feature.properties.time) +
                 "</h4> <hr> <h5 style='text-align:center;'>" + feature.properties.title + "</h5>");
@@ -109,7 +109,7 @@ function createMap() {
 
     var legend = L.control({position: 'bottomright'});
 
-    legend.onAdd = function (map) {
+    legend.onAdd = function(map) {
         var div = L.DomUtil.create('div', 'info legend'),
             magnitude = [0, 1, 2, 3, 4, 5],
             labels = [];
